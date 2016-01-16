@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BooksList>
+    <Book>
+        <title>Tytuł 1</title>
+        <author>Author 1</author>
+        <price>25.219999313354492</price>
+    </Book>
+    <Book>
+        <title>Tytuł 2</title>
+        <author>Author 2</author>
+        <price>29.219999313354492</price>
+    </Book>
+</BooksList>
