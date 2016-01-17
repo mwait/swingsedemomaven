@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -17,6 +18,7 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
+import swingsedemo.database.ServiceDatabaseExcel;
 import swingsedemo.excel.Book;
 import swingsedemo.excel.ServiceExcelLoad;
 import swingsedemo.excel.ServiceExcelSave;
@@ -30,6 +32,7 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JButton saveExcel;
 	private JButton saveXml;
 	private JButton readXml;
+	private JButton database;
 	private JPanel przyciski;
 	private JPanel dolny;
 	private JProgressBar progres;
@@ -56,6 +59,9 @@ public class SwingMain extends JFrame implements ActionListener {
 		readXml = new JButton("Wczytaj Xml");
 		readXml.setActionCommand("readXml");
 		readXml.addActionListener(this);
+		database= new JButton("database");
+		database.setActionCommand("database");
+		database.addActionListener(this);
 
 		przyciski = new JPanel();
 		przyciski.setLayout(new FlowLayout());
@@ -63,6 +69,7 @@ public class SwingMain extends JFrame implements ActionListener {
 		przyciski.add(saveExcel);
 		przyciski.add(saveXml);
 		przyciski.add(readXml);
+		przyciski.add(database);
 
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(przyciski, "Center");
@@ -183,6 +190,30 @@ public class SwingMain extends JFrame implements ActionListener {
 					File file = new File("list_books.xml");
 					ServiceXmlRead serviceXmlRead = new ServiceXmlRead();
 					serviceXmlRead.readXml(file);
+					return null;
+				}
+
+				@Override
+				public void done() {
+					progres.setVisible(false);
+					buttonBoolean(true);
+					label.setText("Gotowy");
+					JOptionPane.showMessageDialog(getContentPane(), "Excel sukces");
+				}
+			};
+			worker.execute();
+		}
+		
+		if (e.getActionCommand().equals("database")) {
+			buttonBoolean(false);
+			SwingWorker worker = new SwingWorker() {
+				@Override
+				protected Object doInBackground() throws Exception {
+					progres.setIndeterminate(true);
+					label.setText("Łącze się z bazą");
+					ServiceDatabaseExcel db = new ServiceDatabaseExcel();
+					db.addDatabase();
+					db.exitDatabase();
 					return null;
 				}
 

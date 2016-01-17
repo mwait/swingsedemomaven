@@ -48,5 +48,11 @@ public class BookXml {
 			return "BookXml [title=" + title + ", author=" + author + ", price=" + price + "]";
 		}
 		 
+		
+	/*	@XmlAttribute(name = "atrybut dla BookXml", required = true)
+		public void setImportance(int importance) {
+		this.importance = importance;
+		}*/
+
 		 
 }
