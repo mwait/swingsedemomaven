@@ -20,6 +20,7 @@ import javax.swing.SwingWorker;
 import swingsedemo.excel.Book;
 import swingsedemo.excel.ServiceExcelLoad;
 import swingsedemo.excel.ServiceExcelSave;
+import swingsedemo.txt.ServiceTxt;
 import swingsedemo.xml.ServiceXmlRead;
 import swingsedemo.xml.ServiceXmlSave;
 
@@ -153,6 +154,11 @@ public class SwingMain extends JFrame implements ActionListener {
 					label.setText("Obrabiam plik xml");
 					ServiceXmlSave serviceXml = new ServiceXmlSave();
 					serviceXml.generateXmlFile(serviceXml.books());
+					//zapisanie do pliku
+					ServiceTxt sTxt = new ServiceTxt();
+					sTxt.saveBookToFile(serviceXml.books());
+					//odczytanie pliku
+					sTxt.loadBookToFile();
 					return null;
 				}
 

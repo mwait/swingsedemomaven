@@ -1,0 +1,2 @@
+BookXml [title=Tytuł 1, author=Author 1, price=25.219999313354492]
+BookXml [title=Tytuł 2, author=Author 2, price=29.219999313354492]

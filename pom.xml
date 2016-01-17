@@ -29,10 +29,17 @@
 			<artifactId>xmlbeans</artifactId>
 			<version>5.3.0-RC1</version>
 		</dependency>
+		<!-- FileUtils -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
-	<!-- 	kompilacja w Java 1.8 -->
+			<!-- kompilacja w Java 1.8 -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
